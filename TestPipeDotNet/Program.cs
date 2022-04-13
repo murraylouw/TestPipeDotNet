@@ -30,8 +30,8 @@ namespace TestPipeDotNet
             {
                 try
                 {
-                    // Send
-                    string tcp_pose = " x y z R P Y ";
+                    // Send input data
+                    string tcp_pose = " 0.5     1.0     1.5     10      20      30 ";
                     string message_from_dotnet = string.Format("<tcp_pose>{0}<tcp_pose/>", tcp_pose);
 
                     var buffer = Encoding.ASCII.GetBytes(message_from_dotnet);     // Get ASCII byte array     
@@ -40,7 +40,7 @@ namespace TestPipeDotNet
                     Console.WriteLine("Sent from .NET: \"{0}\"", message_from_dotnet);
 
 
-                    // Receive
+                    // Receive output data
                     var received_str_length = (int)reader.ReadUInt32();            // Read string length
                     var received_string = new string(reader.ReadChars(received_str_length));    // Read string
 
